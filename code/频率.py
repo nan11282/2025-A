@@ -4,7 +4,7 @@ from scipy.optimize import curve_fit
 
 # 假设楼梯的磨损数据（位置和对应的磨损深度）
 x_data = np.array([1, 2, 3, 4, 5])  # 楼梯位置（台阶编号）
-W_data = np.array([0.1, 0.01, 0.2, 6, 9.0])  # 每个位置的磨损深度（单位可以是毫米）
+W_data = np.array([0.1, 0.2,0.8,1,2])  # 每个位置的磨损深度（单位可以是毫米）
 
 # 假设磨损的速率与使用频率成正比的模型
 def wear_model(x, a, b):
@@ -43,3 +43,12 @@ def calculate_usage_frequency(W, k):
 k = 0.05  #待改进
 u_data = calculate_usage_frequency(W_data, k)
 print(f"楼梯使用频率（每个位置的频率）：{u_data}")
+# 计算拟合值
+W_fit = wear_model(x_data, *params)
+
+# 计算每个点的百分差
+percentage_diff = np.abs((W_data - W_fit) / W_data) * 100
+
+# 输出每个点的百分差
+for i, diff in enumerate(percentage_diff):
+    print(f"位置 {x_data[i]} 的百分差: {diff:.2f}%")
