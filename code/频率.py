@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
 # 假设楼梯的磨损数据（位置和对应的磨损深度）
-x_data = np.array([1, 2, 3, 4, 5,6])  # 楼梯位置（台阶编号）
-W_data = np.array([0.1, 0.2,0.8,1,2,3])  # 每个位置的磨损深度（单位可以是毫米）
+x_data = np.array([1, 2, 3, 4, 5, 6])
+W_data = np.array([0.3, 0.6, 1.5, 1.8, 0.9, 0.4])  # 中间磨损显著
 
 # 假设磨损的速率与使用频率成正比的模型
 def wear_model(x, a, b):
